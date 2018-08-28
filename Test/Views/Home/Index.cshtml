@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<head>
+    <title>Caixa Eletronico</title>
+</head>
+<body>
+    <div class="header">
+        <h2>Testando Saque</h2>
+    </div>
+    <style media="all" type="text/css">
+    </style>
+    <form method="post" action="CalculaSaque" class="formBonito">
+        <div>
+            <label for="saque">Valor Saque</label><br>
+            <input type="text" id="saque" name="saque" runat="server" />
+            <button>Click</button>
+            <!--<asp : button id="button1" runat="server" text="Button" onclick="Button1_Click">Test</asp>-->
+        </div>
+        <div>
+            <h2>Notas</h2>
+            <ul>
+                <li id="nota100">Notas de R$100: </li>
+                <li id="nota50">Notas de R$50: </li>
+                <li id="nota20">Notas de R$20: </li>
+                <li id="nota10">Notas de R$10: </li>
+                <li id="nota5">Notas de R$5: </li>
+                <li id="nota2">Notas de R$2: </li>
+            </ul>
+            <label for="resultado">Valor final do saque: </label>
+        </div>
+    </form>
+</body>
