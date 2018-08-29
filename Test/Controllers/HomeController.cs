@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Test.Models;
 
 namespace Test.Controllers
 {
@@ -13,24 +14,25 @@ namespace Test.Controllers
             return View();
         }
 
-        public ActionResult About()
+        [HttpPost]
+        public ActionResult Index(string ValorSaque)
         {
-            ViewBag.Message = "Your application description page.";
+            var valorTest = ValorSaque;
 
-            return View();
+            var sacando = new Test.Models.NumeroSaque()
+            {
+                Value = CalculoTest(valorTest)
+            };
+
+            return View(sacando);
         }
 
-        public ActionResult Contact()
+        private ActionResult CalculoTest(string valorTest)
         {
-            ViewBag.Message = "Your contact page.";
+            var testSaque = valorTest;
 
-            return View();
-        }
-        public void CalculaSaque(int saque)
-        {
-            /*
-            int value = saque;
-
+            //Calculo para mostrar as notas?
+            int value = Convert.ToInt32(testSaque);
             int nota100 = 0;
             int nota50 = 0;
             int nota20 = 0;
@@ -50,16 +52,26 @@ namespace Test.Controllers
             nota5 = ((((value % 100) % 50) % 20) % 10) / 5;
             nota2 = (((((value % 100) % 50) % 20) % 10) % 5) / 2;
 
-            if (value != 0)
+            var testModelo = new ValoresNotas()
             {
-                Console.WriteLine("Evetuação de saque indisponível");
-            }
-            else
-            {
-                Console.WriteLine("Passou");   
-            }
-            */
-            return;
+
+            };
+
+            return View(testModelo);
+        }
+        
+        public ActionResult About()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
         }
     }
 }
