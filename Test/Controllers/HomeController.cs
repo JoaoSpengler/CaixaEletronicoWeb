@@ -33,6 +33,7 @@ namespace Test.Controllers
 
             //Calculo para mostrar as notas?
             int value = Convert.ToInt32(testSaque);
+
             int nota100 = 0;
             int nota50 = 0;
             int nota20 = 0;
@@ -51,7 +52,7 @@ namespace Test.Controllers
             nota10 = (((value % 100) % 50) % 20) / 10;
             nota5 = ((((value % 100) % 50) % 20) % 10) / 5;
             nota2 = (((((value % 100) % 50) % 20) % 10) % 5) / 2;
-
+            
             var testModelo = new ValoresNotas()
             {
 
