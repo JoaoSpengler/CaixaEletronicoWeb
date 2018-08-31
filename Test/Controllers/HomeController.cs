@@ -19,9 +19,9 @@ namespace Test.Controllers
         {
             var valorTest = ValorSaque;
 
-            var sacando = new NumeroSaque()
+            var sacando = new SaqueViewModel()
             {
-                Value = CalculoTest(valorTest)
+                Notas = CalculoTest(valorTest)//Vai retornar algo diferente aq dps!!
             };
 
             return View(sacando);
