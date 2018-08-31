@@ -19,7 +19,7 @@ namespace Test.Controllers
         {
             var valorTest = ValorSaque;
 
-            var sacando = new Test.Models.NumeroSaque()
+            var sacando = new NumeroSaque()
             {
                 Value = CalculoTest(valorTest)
             };
@@ -27,7 +27,7 @@ namespace Test.Controllers
             return View(sacando);
         }
 
-        private ActionResult CalculoTest(string valorTest)
+        public ActionResult CalculoTest(string valorTest)
         {
             var testSaque = valorTest;
 
@@ -52,15 +52,17 @@ namespace Test.Controllers
             nota10 = (((value % 100) % 50) % 20) / 10;
             nota5 = ((((value % 100) % 50) % 20) % 10) / 5;
             nota2 = (((((value % 100) % 50) % 20) % 10) % 5) / 2;
-            
-            var testModelo = new ValoresNotas()
+
+
+
+            var testModelo = new SaqueViewModel()
             {
 
             };
 
             return View(testModelo);
         }
-        
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

@@ -13,11 +13,7 @@ namespace Test.Models
 
     public class ValoresNotas
     {
-        public ListaNotas[] ListaFinal { get; set; }
-    }
-
-    public class ListaNotas
-    {
-        public int Notas { get; set; }
+        public int ValorNota { get; set; }
+        public int QtdNota { get; set; }
     }
 }

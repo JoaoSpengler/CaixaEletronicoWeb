@@ -3,6 +3,7 @@
 }
 
 @model Test.Models.NumeroSaque
+@model Test.Models.ValoresNotas
 
 @{
     if (IsPost) {
@@ -28,17 +29,20 @@
         </div>
     </form>
     <div>
-        <h2>Notas</h2>
-        <ul>
-            <!--Inserir os resultados-->
-            <!--Usar XMLHttp?-->
-            <li id="nota100">Notas de R$100: </li>
-            <li id="nota50">Notas de R$50: </li>
-            <li id="nota20">Notas de R$20: </li>
-            <li id="nota10">Notas de R$10: </li>
-            <li id="nota5">Notas de R$5: </li>
-            <li id="nota2">Notas de R$2: </li>
-        </ul>
+        <h3>Notas</h3>
+        <table class="table-bordered">
+            <tr> 
+                <th>Valor Notas</th>
+                <th>Quantidade</th>
+            </tr>
+            @*
+            @foreach (var nota in ValoresNotas)
+            {
+                <td>@Model.ValorNota</td>
+                <td>@Model.QtdNota</td>
+            }
+            *@
+        </table>
         <label for="resultado">Valor final do saque: </label>
     </div>
 
