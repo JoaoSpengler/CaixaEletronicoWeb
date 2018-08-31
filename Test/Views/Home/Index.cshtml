@@ -2,7 +2,6 @@
     ViewBag.Title = "Home Page";
 }
 
-@model Test.Models.NumeroSaque
 @model Test.Models.ValoresNotas
 
 @{
@@ -31,15 +30,26 @@
     <div>
         <h3>Notas</h3>
         <table class="table-bordered">
-            <tr> 
+            <tr>
                 <th>Valor Notas</th>
                 <th>Quantidade</th>
             </tr>
             @*
             @foreach (var nota in ValoresNotas)
             {
-                <td>@Model.ValorNota</td>
-                <td>@Model.QtdNota</td>
+                [
+                    <td>@Model.ValorNota</td>
+                    <td>@Model.QtdNota</td>
+                ]
+                        OU
+                [
+                    <td>
+                        @Html.DisplayFor(modelItem => iten.ValorNota)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => iten.QtdNota)
+                    </td>
+                ]
             }
             *@
         </table>

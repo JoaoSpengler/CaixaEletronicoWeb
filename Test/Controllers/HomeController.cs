@@ -54,13 +54,14 @@ namespace Test.Controllers
             nota2 = (((((value % 100) % 50) % 20) % 10) % 5) / 2;
 
 
-
+            /*
             var testModelo = new SaqueViewModel()
             {
 
             };
+            */
 
-            return View(testModelo);
+            return View();
         }
 
         public ActionResult About()
