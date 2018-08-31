@@ -19,9 +19,9 @@ namespace Test.Controllers
         {
             var valorTest = ValorSaque;
 
-            var sacando = new SaqueViewModel()
+            var sacando = new NumeroSaque()
             {
-                Notas = CalculoTest(valorTest)//Vai retornar algo diferente aq dps!!
+                Value = CalculoTest(valorTest)
             };
 
             return View(sacando);
@@ -53,15 +53,13 @@ namespace Test.Controllers
             nota5 = ((((value % 100) % 50) % 20) % 10) / 5;
             nota2 = (((((value % 100) % 50) % 20) % 10) % 5) / 2;
 
-
-            /*
+            
             var testModelo = new SaqueViewModel()
             {
 
             };
-            */
 
-            return View();
+            return View(testModelo);
         }
 
         public ActionResult About()
