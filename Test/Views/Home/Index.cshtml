@@ -4,6 +4,7 @@
 
 @model Test.Models.ValoresNotas
 
+<!--
 @{
     if (IsPost) {
         string test = Request.Form["ValorSaque"];
@@ -14,46 +15,83 @@
 </text>
     }
 }
+-->
+<head>
+    <style>
+        table {
+            border-collapse: inherit;
+            border: 2px solid black;
+            padding: 2px;
+        }
+        th {
+            background-color: black;
+            color: white;
+            width:150px;
+        }
+    </style>
+</head>
 <body>
     <div class="header">
-        <h2>Testando Saque</h2>
+        <h2>Caixa Eletrônico</h2>
     </div>
-    <style media="all" type="text/css">
-    </style>
-    <form method="POST" class="formBonito" runat="server">
+    <div>
+        <br>
+        <h4>Deposito</h4>
+    </div>
+    <form method="POST" runat="server">
         <div>
-            <label for="ValorSaque">Insira o valor a ser sacado:</label>
-            <input type="text" name="ValorSaque" value="" placeholder="Insira o valor aqui" />
-            <input type="submit" />
+            <label for="ValorDeposito">Deposite o valor:</label>
+            <input type="text" name="ValorDeposito" value="" placeholder="Insira aqui" />
+            <input type="submit" value="Depositar" />
+        </div>
+    </form>
+    <div>
+        <br>
+        <h4>Saque</h4>
+    </div>
+    <form method="POST" runat="server">
+        <div>
+            <label for="ValorSaque">Valor a ser sacado:</label>
+            <input type="text" name="ValorSaque" value="" placeholder="Insira aqui" />
+            <input type="submit" value="Sacar" />
         </div>
     </form>
     <div>
         <h3>Notas</h3>
-        <table class="table-bordered">
+        <table>
             <tr>
                 <th>Valor Notas</th>
                 <th>Quantidade</th>
             </tr>
-            @*
-            @foreach (var nota in ValoresNotas)
-            {
-                [
-                    <td>@Model.ValorNota</td>
-                    <td>@Model.QtdNota</td>
-                ]
-                        OU
-                [
-                    <td>
-                        @Html.DisplayFor(modelItem => iten.ValorNota)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => iten.QtdNota)
-                    </td>
-                ]
-            }
-            *@
+            <tr>
+                <td>Nota de 100</td>
+                <td style="text-align:center">@Html.DisplayFor(modelItem => Model.N100)</td>
+            </tr>
+            <tr>
+                <td>Nota de 50</td>
+                <td style="text-align:center">@Html.DisplayFor(modelItem => Model.N50)</td>
+            </tr>
+            <tr>
+                <td>Nota de 20</td>
+                <td style="text-align:center">@Html.DisplayFor(modelItem => Model.N20)</td>
+            </tr>
+            <tr>
+                <td>Nota de 10</td>
+                <td style="text-align:center">@Html.DisplayFor(modelItem => Model.N10)</td>
+            </tr>
+            <tr>
+                <td>Nota de 5</td>
+                <td style="text-align:center">@Html.DisplayFor(modelItem => Model.N5)</td>
+            </tr>
+            <tr>
+                <td>Nota de 2</td>
+                <td style="text-align:center">@Html.DisplayFor(modelItem => Model.N2)</td>
+            </tr>
         </table>
-        <label for="resultado">Valor final do saque: </label>
+        <div>
+            <br>
+            <strong>@Html.DisplayFor(modelItem => Model.Valid)</strong>
+        </div>
     </div>
 
 </body>

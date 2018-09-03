@@ -17,22 +17,17 @@ namespace Test.Controllers
         [HttpPost]
         public ActionResult Index(string ValorSaque)
         {
-            var valorTest = ValorSaque;
+            var testSaque = ValorSaque;
+            int value;
 
-            var sacando = new NumeroSaque()
+            if (testSaque == "")
             {
-                Value = CalculoTest(valorTest)
-            };
-
-            return View(sacando);
-        }
-
-        public ActionResult CalculoTest(string valorTest)
-        {
-            var testSaque = valorTest;
-
-            //Calculo para mostrar as notas?
-            int value = Convert.ToInt32(testSaque);
+                value = 0;
+            }
+            else
+            {
+                value = Convert.ToInt32(testSaque);
+            }
 
             int nota100 = 0;
             int nota50 = 0;
@@ -50,16 +45,31 @@ namespace Test.Controllers
             nota50 = (value % 100) / 50;
             nota20 = ((value % 100) % 50) / 20;
             nota10 = (((value % 100) % 50) % 20) / 10;
-            nota5 = ((((value % 100) % 50) % 20) % 10) / 5;
-            nota2 = (((((value % 100) % 50) % 20) % 10) % 5) / 2;
+            nota2 = (((((value % 100) % 50) % 20) % 10) / 2);
 
-            
-            var testModelo = new SaqueViewModel()
+            value = (value - ((100 * nota100) + (50 * nota50) + (20 * nota20) + (10 * nota10) + (2 * nota2)));
+
+            if (value == 0) {
+                var testModelo = new ValoresNotas()
+                {
+                    N100 = nota100,
+                    N50 = nota50,
+                    N20 = nota20,
+                    N10 = nota10,
+                    N5 = nota5,
+                    N2 = nota2,
+                    Valid = "O saque pode ser realizado"
+                };
+                return View(testModelo);
+            }
+            else
             {
-
-            };
-
-            return View(testModelo);
+                var testModelo = new ValoresNotas()
+                {
+                    Valid = "O saque é inválido"
+                };
+                return View(testModelo);
+            }
         }
 
         public ActionResult About()
