@@ -27,6 +27,7 @@
             background-color: black;
             color: white;
             width:150px;
+            text-align:center;
         }
     </style>
 </head>
@@ -40,11 +41,14 @@
     </div>
     <form method="POST" runat="server">
         <div>
-            <label for="ValorDeposito">Deposite o valor:</label>
-            <input type="text" name="ValorDeposito" value="" placeholder="Insira aqui" />
+            <label for="ValorDeposita">Deposite o valor:</label>
+            <input type="text" name="ValorDeposita" value="" placeholder="Insira aqui" />
             <input type="submit" value="Depositar" />
         </div>
     </form>
+    <div>
+        <p>Saldo total: </p>
+    </div>
     <div>
         <br>
         <h4>Saque</h4>

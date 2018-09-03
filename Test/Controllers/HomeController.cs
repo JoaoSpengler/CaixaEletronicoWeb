@@ -15,7 +15,27 @@ namespace Test.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(string ValorSaque)
+        public ActionResult Index(string ValorSaque , string ValorDeposita)
+        {
+            var saqueFinal = CalculaSaque(ValorSaque);
+            //var depositoTotal = DepositaValor(ValorDeposita);
+            return View();
+        }
+
+        public ActionResult DepositaValor(string ValorDeposita)
+        {
+            var deposito = ValorDeposita;
+            int depositarValor = Convert.ToInt32(deposito);
+
+            var testaDeposito = new Deposito()
+            {
+                ValorDeposito = depositarValor
+            };
+
+            return View(testaDeposito);
+        }
+        
+        public ActionResult CalculaSaque(string ValorSaque)
         {
             var testSaque = ValorSaque;
             int value;

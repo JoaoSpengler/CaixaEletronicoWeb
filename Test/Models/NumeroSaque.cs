@@ -21,4 +21,9 @@ namespace Test.Models
         public int N2 { get; set; }
         public string Valid { get; set; }
     }
+
+    public class Deposito
+    {
+        public int ValorDeposito { get; set; }
+    }
 }
