@@ -24,6 +24,6 @@ namespace Test.Models
 
     public class Deposito
     {
-        public int ValorDeposito { get; set; }
+        public int SaldoTotal { get; set; }
     }
 }

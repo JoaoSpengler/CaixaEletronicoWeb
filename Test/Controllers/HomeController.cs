@@ -15,13 +15,17 @@ namespace Test.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(string ValorSaque , string ValorDeposita)
+        public ActionResult Index(string ValorSaque, string ValorDeposita)
         {
             var saqueFinal = CalculaSaque(ValorSaque);
             //var depositoTotal = DepositaValor(ValorDeposita);
             return View();
+            //Devaria retornar a page toda?!
         }
 
+        //Atualizar a tabela de forma independente! 
+        //Se houver clique no Botão de depósito, atualizar apenas o Saldo Total!
+        //Se houver clique no Botao de saque, atualizar tabela e o Saldo Total!
         public ActionResult DepositaValor(string ValorDeposita)
         {
             var deposito = ValorDeposita;
@@ -29,7 +33,8 @@ namespace Test.Controllers
 
             var testaDeposito = new Deposito()
             {
-                ValorDeposito = depositarValor
+                SaldoTotal = depositarValor
+                //Somar Saldo anterior com o novo deposito!
             };
 
             return View(testaDeposito);
@@ -48,6 +53,10 @@ namespace Test.Controllers
             {
                 value = Convert.ToInt32(testSaque);
             }
+            //Verificar se é possivel fazer a retirada!
+            //If testeSaque > SaldoTotal --> Saldo Indisponivel
+            //Else |
+            //     V
 
             int nota100 = 0;
             int nota50 = 0;
@@ -80,6 +89,7 @@ namespace Test.Controllers
                     N2 = nota2,
                     Valid = "O saque pode ser realizado"
                 };
+                //Retirar Valor do Saque do Saldo total e Atualizar na tela.
                 return View(testModelo);
             }
             else
