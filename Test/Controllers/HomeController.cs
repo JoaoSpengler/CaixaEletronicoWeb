@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Test.Models;
+using Test.Controllers;
 
 namespace Test.Controllers
 {
@@ -30,16 +31,10 @@ namespace Test.Controllers
         {
             var deposito = ValorDeposita;
             int depositarValor = Convert.ToInt32(deposito);
-
-            var testaDeposito = new Deposito()
-            {
-                SaldoTotal = depositarValor
-                //Somar Saldo anterior com o novo deposito!
-            };
-
-            return View(testaDeposito);
+            
+            return View();
         }
-        
+
         public ActionResult CalculaSaque(string ValorSaque)
         {
             var testSaque = ValorSaque;
@@ -53,52 +48,65 @@ namespace Test.Controllers
             {
                 value = Convert.ToInt32(testSaque);
             }
-            //Verificar se é possivel fazer a retirada!
-            //If testeSaque > SaldoTotal --> Saldo Indisponivel
-            //Else |
-            //     V
 
-            int nota100 = 0;
-            int nota50 = 0;
-            int nota20 = 0;
-            int nota10 = 0;
-            int nota5 = 0;
-            int nota2 = 0;
-
-            if (value % 2 != 0 && value > 5)
+            var testeDeposito = new Deposito()
             {
-                value -= 5;
-                nota5 += 1;
-            }
-            nota100 = value / 100;
-            nota50 = (value % 100) / 50;
-            nota20 = ((value % 100) % 50) / 20;
-            nota10 = (((value % 100) % 50) % 20) / 10;
-            nota2 = (((((value % 100) % 50) % 20) % 10) / 2);
+                SaldoTotal = 5000
+            };
 
-            value = (value - ((100 * nota100) + (50 * nota50) + (20 * nota20) + (10 * nota10) + (2 * nota2)));
-
-            if (value == 0) {
-                var testModelo = new ValoresNotas()
-                {
-                    N100 = nota100,
-                    N50 = nota50,
-                    N20 = nota20,
-                    N10 = nota10,
-                    N5 = nota5,
-                    N2 = nota2,
-                    Valid = "O saque pode ser realizado"
-                };
-                //Retirar Valor do Saque do Saldo total e Atualizar na tela.
-                return View(testModelo);
+            bool saqueAprovado = testeDeposito.VerificaSaldo(value);
+            
+            if (saqueAprovado == false)
+            {
+                //Mostrar ao usuario que o saldo é insuficiente.
+                return View();
             }
             else
             {
-                var testModelo = new ValoresNotas()
+                int nota100 = 0;
+                int nota50 = 0;
+                int nota20 = 0;
+                int nota10 = 0;
+                int nota5 = 0;
+                int nota2 = 0;
+
+                if (value % 2 != 0 && value > 5)
                 {
-                    Valid = "O saque é inválido"
-                };
-                return View(testModelo);
+                    value -= 5;
+                    nota5 += 1;
+                }
+                nota100 = value / 100;
+                nota50 = (value % 100) / 50;
+                nota20 = ((value % 100) % 50) / 20;
+                nota10 = (((value % 100) % 50) % 20) / 10;
+                nota2 = (((((value % 100) % 50) % 20) % 10) / 2);
+
+                value = (value - ((100 * nota100) + (50 * nota50) + (20 * nota20) + (10 * nota10) + (2 * nota2)));
+
+                if (value == 0)
+                {
+                    var testModelo = new ValoresNotas()
+                    {
+                        N100 = nota100,
+                        N50 = nota50,
+                        N20 = nota20,
+                        N10 = nota10,
+                        N5 = nota5,
+                        N2 = nota2,
+                        Valid = "O saque pode ser realizado",
+                        SaldoFinal = testeDeposito.AtualizaSaldo(Convert.ToInt32(testSaque))
+                    };
+                    //Retirar Valor do Saque do Saldo total e Atualizar na tela.
+                    return View(testModelo);
+                }
+                else
+                {
+                    var testModelo = new ValoresNotas()
+                    {
+                        Valid = "O saque é inválido"
+                    };
+                    return View(testModelo);
+                }
             }
         }
 
