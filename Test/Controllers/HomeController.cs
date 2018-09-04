@@ -19,7 +19,7 @@ namespace Test.Controllers
         public ActionResult Index(string ValorSaque, string ValorDeposita)
         {
             var saqueFinal = CalculaSaque(ValorSaque);
-            var depositoTotal = DepositaValor(ValorDeposita);
+            //var depositoTotal = DepositaValor(ValorDeposita);
             return View();
             //Devaria retornar a page toda?!
         }
@@ -48,6 +48,17 @@ namespace Test.Controllers
             else
             {
                 value = Convert.ToInt32(testSaque);
+            }
+
+            int testAttValor;
+
+            if (value == 0)
+            {
+                testAttValor = 0;
+            }
+            else
+            {
+                testAttValor = value;
             }
 
             var testeDeposito = new Deposito()
@@ -83,7 +94,7 @@ namespace Test.Controllers
                 nota2 = (((((value % 100) % 50) % 20) % 10) / 2);
 
                 value = (value - ((100 * nota100) + (50 * nota50) + (20 * nota20) + (10 * nota10) + (2 * nota2)));
-
+                
                 if (value == 0)
                 {
                     var testModelo = new ValoresNotas()
@@ -95,7 +106,7 @@ namespace Test.Controllers
                         N5 = nota5,
                         N2 = nota2,
                         Valid = "O saque pode ser realizado",
-                        SaldoFinal = testeDeposito.AtualizaSaldo(Convert.ToInt32(testSaque))
+                        SaldoFinal = testeDeposito.AtualizaSaldo(testAttValor)
                     };
                     //Retirar Valor do Saque do Saldo total e Atualizar na tela.
                     return View(testModelo);
