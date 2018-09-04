@@ -4,18 +4,6 @@
 
 @model Test.Models.ValoresNotas
 
-<!--
-@{
-    if (IsPost) {
-        string test = Request.Form["ValorSaque"];
-
-<text>
-    You entered: <br />
-    Test: @test Nope<br />
-</text>
-    }
-}
--->
 <head>
     <style>
         table {
@@ -23,11 +11,12 @@
             border: 2px solid black;
             padding: 2px;
         }
+
         th {
             background-color: black;
             color: white;
-            width:150px;
-            text-align:center;
+            width: 150px;
+            text-align: center;
         }
     </style>
 </head>
@@ -42,19 +31,12 @@
     <form method="POST" runat="server">
         <div>
             <label for="ValorDeposita">Deposite o valor:</label>
-            <input type="text" name="ValorDeposita" value="" placeholder="Insira aqui"  onkeyup="loadDoc(this.value)"/>
-            <input type="submit" value="Depositar" onclick="loadDoc(this.value)" />
+            <input type="text" name="ValorDeposita" value="" placeholder="Insira aqui" />
+            <input type="submit" value="Depositar" /><!--Este input não deveria atualizar a page toda! Apenas o saldoTotal-->
         </div>
     </form>
-    <!-- Aqui é pra começar a conversão para o AJAX
-    <script>
-        function loadDoc(value) {
-
-        }
-    </script>
-    -->
     <div>
-        <p>Saldo total: <strong>@Html.DisplayFor(modelItem => Model.SaldoFinal)</strong></p>
+        <p>Saldo total: <strong>@Html.DisplayFor(modelItem => Model.SaldoFinal)</strong> <!--Retirar do Model o Saldo Total--></p>
     </div>
     <div>
         <br>

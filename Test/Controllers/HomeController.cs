@@ -32,7 +32,12 @@ namespace Test.Controllers
             var deposito = ValorDeposita;
             int depositarValor = Convert.ToInt32(deposito);
 
-            
+            var depositando = new Deposito();
+
+            var testDeposito = depositando.AcrescentaSaldo(depositarValor);
+
+            //testDeposito deveria ser enviado para o valor de saldo!
+
             return View();
         }
 
