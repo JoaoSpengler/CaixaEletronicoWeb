@@ -19,7 +19,7 @@ namespace Test.Controllers
         public ActionResult Index(string ValorSaque, string ValorDeposita)
         {
             var saqueFinal = CalculaSaque(ValorSaque);
-            //var depositoTotal = DepositaValor(ValorDeposita);
+            var depositoTotal = DepositaValor(ValorDeposita);
             return View();
             //Devaria retornar a page toda?!
         }
@@ -31,6 +31,7 @@ namespace Test.Controllers
         {
             var deposito = ValorDeposita;
             int depositarValor = Convert.ToInt32(deposito);
+
             
             return View();
         }
