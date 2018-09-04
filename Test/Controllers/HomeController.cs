@@ -68,7 +68,7 @@ namespace Test.Controllers
 
             var testeDeposito = new Deposito()
             {
-                SaldoTotal = 5000
+                SaldoTotal = 100000000
             };
 
             bool saqueAprovado = testeDeposito.VerificaSaldo(value);
@@ -110,7 +110,6 @@ namespace Test.Controllers
                         N10 = nota10,
                         N5 = nota5,
                         N2 = nota2,
-                        Valid = "O saque pode ser realizado",
                         SaldoFinal = testeDeposito.AtualizaSaldo(testAttValor)
                     };
                     //Retirar Valor do Saque do Saldo total e Atualizar na tela.

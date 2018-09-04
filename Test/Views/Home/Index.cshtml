@@ -30,6 +30,18 @@
             text-align:center;
         }
     </style>
+    <script type="text/javascript">
+        $('#Depositar').click(function () {
+            //logica do POST para salvar o valor do deposito
+            var url = "/Home/Index";
+            var 
+        })
+    </script>
+    <script type="text/javascript">
+        $('#Sacar').click(function () {
+            //logica do POST para salval o valor do saque
+        })
+    </script>
 </head>
 <body>
     <div class="header">
@@ -43,7 +55,7 @@
         <div>
             <label for="ValorDeposita">Deposite o valor:</label>
             <input type="text" name="ValorDeposita" value="" placeholder="Insira aqui"  onkeyup="loadDoc(this.value)"/>
-            <input type="submit" value="Depositar" onclick="loadDoc(this.value)" />
+            <input type="submit" value="Depositar" id="Depositar"/>
         </div>
     </form>
     <!-- Aqui é pra começar a conversão para o AJAX
@@ -64,7 +76,7 @@
         <div>
             <label for="ValorSaque">Valor a ser sacado:</label>
             <input type="text" name="ValorSaque" value="" placeholder="Insira aqui" />
-            <input type="submit" value="Sacar" />
+            <input type="submit" value="Sacar" id="Sacar"/>
         </div>
     </form>
     <div>
@@ -101,9 +113,7 @@
         </table>
         <div>
             <br>
-            <strong>@Html.DisplayFor(modelItem => Model.Valid)</strong>
-            <br>
-            <strong>@Html.DisplayFor(modelItem => Model.SaldoFinal)</strong>
+            <strong>@Html.DisplayFor(modelItem => Model.Valid)</strong> <!--Somente sinalizar se saque for inválido-->
         </div>
     </div>
 
