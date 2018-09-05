@@ -4,18 +4,6 @@
 
 @model Test.Models.ValoresNotas
 
-<!--
-@{
-    if (IsPost) {
-        string test = Request.Form["ValorSaque"];
-
-<text>
-    You entered: <br />
-    Test: @test Nope<br />
-</text>
-    }
-}
--->
 <head>
     <style>
         table {
@@ -54,17 +42,29 @@
     <form method="POST" runat="server">
         <div>
             <label for="ValorDeposita">Deposite o valor:</label>
-            <input type="text" name="ValorDeposita" value="" placeholder="Insira aqui"  onkeyup="loadDoc(this.value)"/>
+            <input type="text" name="ValorDeposita" value="" placeholder="Insira aqui"/>
             <input type="submit" value="Depositar" id="Depositar"/>
         </div>
     </form>
-    <!-- Aqui é pra começar a conversão para o AJAX
     <script>
-        function loadDoc(value) {
-
-        }
+        $(document).ready(function{
+            $('#ValorDeposita').click(function () {
+                $.ajax({
+                    url: '@Url.Action("DepositaValor")',
+                    data: { value: $("#ValorDeposita").val() },
+                    sucess: function (r) {
+                        console.log("testando");
+                        $("nota100").html(r.nota100)
+                        $("nota50").html(r.nota50)
+                        $("nota20").html(r.nota20)
+                        $("nota10").html(r.nota10)
+                        $("nota5").html(r.nota5)
+                        $("nota2").html(r.nota2)
+                    }
+                })
+            })
+        })
     </script>
-    -->
     <div>
         <p>Saldo total: <strong>@Html.DisplayFor(modelItem => Model.SaldoFinal)</strong></p>
     </div>

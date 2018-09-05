@@ -21,9 +21,9 @@ namespace Test.Controllers
             var saqueFinal = CalculaSaque(ValorSaque);
             //var depositoTotal = DepositaValor(ValorDeposita);
             return View();
-            //Devaria retornar a page toda?!
         }
 
+        //#AJAX
         //Atualizar a tabela de forma independente! 
         //Se houver clique no Botão de depósito, atualizar apenas o Saldo Total!
         //Se houver clique no Botao de saque, atualizar tabela e o Saldo Total!
@@ -66,9 +66,10 @@ namespace Test.Controllers
                 testAttValor = value;
             }
 
+            //Apenas ilustrativo / para se ter uma noção se o deposito funfa
             var testeDeposito = new Deposito()
             {
-                SaldoTotal = 100000000
+                SaldoTotal = 10000
             };
 
             bool saqueAprovado = testeDeposito.VerificaSaldo(value);
@@ -99,7 +100,9 @@ namespace Test.Controllers
                 nota2 = (((((value % 100) % 50) % 20) % 10) / 2);
 
                 value = (value - ((100 * nota100) + (50 * nota50) + (20 * nota20) + (10 * nota10) + (2 * nota2)));
-                
+
+
+
                 if (value == 0)
                 {
                     var testModelo = new ValoresNotas()

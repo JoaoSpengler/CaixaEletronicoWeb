@@ -6,11 +6,6 @@ using System.Web.Mvc;
 
 namespace Test.Models
 {
-    public class NumeroSaque
-    {
-        public ActionResult Value { get; set;  }
-    }
-
     public class ValoresNotas
     {
         public int N100 { get; set; }
